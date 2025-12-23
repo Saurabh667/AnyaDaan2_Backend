@@ -11,16 +11,73 @@ from django.views.decorators.csrf import csrf_exempt
 from django.core.mail import send_mail
 import json
 from django.conf import settings
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+
 
 
 class DonationCreateView(APIView):
     def post(self, request):
         serializer = DonationDataSerializer(data=request.data)
         if serializer.is_valid():
-            serializer.save()
+            # serializer.save()
+            donation=serializer.save()
+            receiversEmails=list(
+            CustomUser.objects
+            .filter(role='receiver')
+            .values_list('email', flat=True)
+            )
+            if receiversEmails:
+                subject = "New Contribution Available – AnyaDaan 🤍"
+
+            message = f"""
+                A new contribution has been submitted on AnyaDaan.
+
+                Name: {donation.name}
+                Email: {donation.email}
+                Contribution Type: {donation.contributionType}
+                Description:
+                {donation.description}
+                Message:
+                {donation.message}
+                Request Time:{donation.created_at}
+
+                You can contact to recieve the donation.
+                """
+            send_mail(
+                    subject=subject,
+                    message=message,
+                    from_email=settings.DEFAULT_FROM_EMAIL,
+                    recipient_list=receiversEmails,
+                    fail_silently=False,
+                    )
+            print(receiversEmails,'requests are send')
+
+
+            contributor_email = donation.email  # adjust field name if different
+            contributor_name = donation.name if hasattr(donation, 'name') else "Dear Contributor"
+            send_mail(
+                subject="Thank you for your contribution 🤍",
+                message=f"""
+Hello {contributor_name},
+    Thank you for your kind contribution on AnyaDaan.
+Your generosity can make a real difference in someone’s life.
+We truly appreciate your support and willingness to help others.
+Warm regards,
+Team AnyaDaan
+Making kindness easier 🤍
+                                """,
+                from_email=settings.DEFAULT_FROM_EMAIL,
+                recipient_list=[contributor_email],
+                fail_silently=False,
+                )
+            print('thanking mail send to ',contributor_email)
+
+
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     
+
 
 receivers = CustomUser.objects.filter(role='receiver')
 print(receivers)
@@ -31,77 +88,5 @@ receiversEmail=list(
     .values_list('email', flat=True)
 )
 print(receiversEmail)
-for i in range(0,len(receiversEmail)):
-        selectedMail=receiversEmail[i]
-        
-        @csrf_exempt
-        def send_email_view(request):
-            if request.method == "POST":
-                try:
-                    data = json.loads(request.body)
-                    email = selectedMail
-                    # companyName=data.name
 
-                    if not email:
-                        return JsonResponse(
-                            {"error": "Email is required"},
-                            status=400
-                        )
-
-                    # otp = random.randint(100000, 999999)
-
-                    message = f"""
-                        Hello,
-
-                        Welcome to AnyaDaan! 🌱
-                        We’re really happy to have you with us.
-
-                        Your account has been successfully created, and you’re now part of a community that believes in helping others and making a positive impact.
-
-                        What you can do with AnyaDaan:
-
-                        Explore and support meaningful causes
-
-                        Connect with people who want to make a difference
-
-                        Participate in donations and community initiatives
-
-                        If you ever need help or have questions, feel free to reply to this email—we’re always here to help.
-
-                        Thank you for joining us and being part of this journey.
-
-                        Warm regards,
-                        Team AnyaDaan
-                        Making kindness easier 🤍
-                        """
-
-                    # Debug log
-                    
-
-                    send_mail(
-                        subject="A Donation request is being posted.",
-                        message=message,
-                        from_email=settings.DEFAULT_FROM_EMAIL,
-                        recipient_list=[email],
-                        fail_silently=False,
-                    )
-
-                    return JsonResponse(
-                        {
-                            "message": "OTP sent successfully",
-                            "otp": receiversEmail  
-                        },
-                        status=200
-                    )
-
-                except Exception as e:
-                    return JsonResponse(
-                        {"error": str(e)},
-                        status=500
-                    )
-
-            return JsonResponse(
-                {"error": "Only POST method allowed"},
-                status=405
-            )
 

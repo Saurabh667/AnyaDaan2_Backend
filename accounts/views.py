@@ -32,29 +32,29 @@ def send_email_view(request):
             otp = random.randint(100000, 999999)
 
             message = f"""
-Hello,
+                        Hello,
 
-Welcome to AnyaDaan! 🌱
-We’re really happy to have you with us.
+                        Welcome to AnyaDaan! 🌱
+                        We’re really happy to have you with us.
 
-Your account has been successfully created, and you’re now part of a community that believes in helping others and making a positive impact.
+                        Your account has been successfully created, and you’re now part of a community that believes in helping others and making a positive impact.
 
-What you can do with AnyaDaan:
+                        What you can do with AnyaDaan:
 
-Explore and support meaningful causes
+                        Explore and support meaningful causes
 
-Connect with people who want to make a difference
+                        Connect with people who want to make a difference
 
-Participate in donations and community initiatives
+                        Participate in donations and community initiatives
 
-If you ever need help or have questions, feel free to reply to this email—we’re always here to help.
+                        If you ever need help or have questions, feel free to reply to this email—we’re always here to help.
 
-Thank you for joining us and being part of this journey.
+                        Thank you for joining us and being part of this journey.
 
-Warm regards,
-Team AnyaDaan
-Making kindness easier 🤍
-"""
+                        Warm regards,
+                        Team AnyaDaan
+                        Making kindness easier 🤍
+                        """
 
             # Debug log
             print(f"📧 Sending OTP {otp} to {email}")
