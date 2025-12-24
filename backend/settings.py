@@ -12,6 +12,9 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 
 from pathlib import Path
 import os
+from dotenv import load_dotenv
+load_dotenv()
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -21,10 +24,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-p6(k-vhzk8m09auko2b=scoyemszo(07un&96h@%_1oz@**b6x'
+# SECRET_KEY = 'django-insecure-p6(k-vhzk8m09auko2b=scoyemszo(07un&96h@%_1oz@**b6x'
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# # SECURITY WARNING: don't run with debug turned on in production!
+# DEBUG = True
+SECRET_KEY = os.getenv("SECRET_KEY")
+DEBUG = os.getenv("DEBUG") == "True"
+
 
 ALLOWED_HOSTS = []
 
@@ -89,16 +95,31 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 #     }
 # }
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'anyadaan_db',
+#         'USER': 'saurabh',
+#         'PASSWORD': 'Yadav@1977',
+#         'HOST': 'localhost',
+#         'PORT': '5432',
+#         'OPTIONS': {
+#             'options': '-c search_path=newschema'
+#         }
+#     }
+# }
+
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'anyadaan_db',
-        'USER': 'saurabh',
-        'PASSWORD': 'Yadav@1977',
-        'HOST': 'localhost',
-        'PORT': '5432',
+        'NAME': os.getenv("DB_NAME"),
+        'USER': os.getenv("DB_USER"),
+        'PASSWORD': os.getenv("DB_PASSWORD"),
+        'HOST': os.getenv("DB_HOST"),
+        'PORT': os.getenv("DB_PORT"),
         'OPTIONS': {
-            'options': '-c search_path=newschema'
+            'options': f"-c search_path={os.getenv('DB_SCHEMA')}"
         }
     }
 }
@@ -154,16 +175,22 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 # EMAIL_HOST_USER ='alfaazarena@gmail.com'
 # EMAIL_HOST_PASSWORD = 'tkikppyscxvcfibv'   alfaaz arena pass
-EMAIL_HOST_USER ='aanyadaan@gmail.com'
-EMAIL_HOST_PASSWORD = 'nbtlatcbqlftbnwb'
+# EMAIL_HOST_USER ='aanyadaan@gmail.com'
+# EMAIL_HOST_PASSWORD = 'nbtlatcbqlftbnwb'
+# DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+EMAIL_HOST_USER = os.getenv("EMAIL_HOST_USER")
+EMAIL_HOST_PASSWORD = os.getenv("EMAIL_HOST_PASSWORD")
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
 
+# CORS_ALLOWED_ORIGINS = [
+#     'http://localhost:5173',
+# ]
 CORS_ALLOWED_ORIGINS = [
-    'http://localhost:5173',
+    os.getenv("FRONTEND_URL"),
 ]
 
-CORS_ALLOW_ALL_ORIGINS = True
+# CORS_ALLOW_ALL_ORIGINS = True
 
 
 MEDIA_URL = '/media/'
