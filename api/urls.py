@@ -10,4 +10,6 @@ urlpatterns = [
     path('token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     path('donationData/',donationViews.DonationCreateView.as_view()),
+    path("donations/recent/", donationViews.donations_last_24_hours),
+
 ]

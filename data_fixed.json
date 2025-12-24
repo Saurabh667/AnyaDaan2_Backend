@@ -1,0 +1,558 @@
+[
+{
+  "model": "accounts.customuser",
+  "pk": 1,
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$mA6YlLlVk00M3kP5AwZoln$U4tJ9LH0DwLmVHBc9Jq7Kv5IPytNuJ79xx+TEzkMKME=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "saurav667@gmail.com",
+    "first_name": "SAURABH",
+    "last_name": "YADAV",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2025-12-19T06:41:31.777Z",
+    "company_name": "sachin",
+    "role": "receiver",
+    "phone": "09889700955",
+    "email": "saurav667@gmail.com",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "accounts.customuser",
+  "pk": 2,
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$HQM2EAmyKZ5Xixli56vMiN$3ialAP6GSC1Meyvxmaq2WqkrKjk8JeAuJi73qK9NnYo=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "saurajhjhgv000667@gmail.com",
+    "first_name": "SAURABH",
+    "last_name": "YADAV",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2025-12-19T07:05:15.791Z",
+    "company_name": "sachin",
+    "role": "receiver",
+    "phone": "54545545",
+    "email": "saurajhjhgv000667@gmail.com",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "accounts.customuser",
+  "pk": 3,
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$DCwZKqhZfEn8eK9ExY9cwW$oe5ZPUmFwB2dI/ziXjkhwTwI8sRrRhPiwRtMsuoGD/8=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "saurajhjhgv00fd0667@gmail.com",
+    "first_name": "SAURABH",
+    "last_name": "YADAV",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2025-12-19T07:46:16.421Z",
+    "company_name": "sachin",
+    "role": "receiver",
+    "phone": "54545545",
+    "email": "saurajhjhgv00fd0667@gmail.com",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "accounts.customuser",
+  "pk": 4,
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$bGz9YqYr7wogXjFdwNvr6j$7JKCJo0UAg8Hpa4043ulwicCB1auuXbl2AC4WjUy0DE=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "saurabh@gmail.com",
+    "first_name": "SAURABH",
+    "last_name": "YADAV",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2025-12-19T07:47:29.439Z",
+    "company_name": "sachin",
+    "role": "donor",
+    "phone": "54545545",
+    "email": "saurabh@gmail.com",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "accounts.customuser",
+  "pk": 5,
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$DvYnBWrWUG1GAFvmfn0Av8$Ntg4HidsaOhhZdNBT8y0pyBIgyKeWe2wXJflNRFDPLE=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "a",
+    "first_name": "SAURABH",
+    "last_name": "YADAV",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2025-12-20T11:45:01.149Z",
+    "company_name": "sachin",
+    "role": "donor",
+    "phone": "54545545",
+    "email": "a@gmail.com",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "accounts.customuser",
+  "pk": 6,
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$o9RNjHd8GDpkFLu7EYCVwg$lM2lKQ9THcLcYyec77G5vomklx+hHgauT3sK37XK4Ds=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "ab",
+    "first_name": "SAURABH",
+    "last_name": "YADAV",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2025-12-20T11:45:58.334Z",
+    "company_name": "sachin",
+    "role": "donor",
+    "phone": "54545545",
+    "email": "ab@gmail.com",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "accounts.customuser",
+  "pk": 7,
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$qPKoS0TdMye722vm0ANI8p$aX4YYvLlJMQeDYXz6JGLuxNVx2uRqLUJe1zQ3p4DqUo=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "saurav000667@gmail.com",
+    "first_name": "SAURABH",
+    "last_name": "YADAV",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2025-12-20T12:13:00.082Z",
+    "company_name": "saurabh",
+    "role": "donor",
+    "phone": "54545545",
+    "email": "saurav000667@gmail.com",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "accounts.customuser",
+  "pk": 8,
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$wkFt7bBUEaN589ThyF1KH1$QzPOufIIhzl4YcngF/BvxX/B+YFvp88WjEobksUn5AQ=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "sahilsrivastav314@gmail.com",
+    "first_name": "SAURABH",
+    "last_name": "YADAV",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2025-12-22T08:41:28.536Z",
+    "company_name": "saurabh",
+    "role": "donor",
+    "phone": "54545545",
+    "email": "sahilsrivastav314@gmail.com",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "accounts.customuser",
+  "pk": 9,
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$eHOsiHkPvcspmVMKXwNwOi$oZInn1//iBYL+WbOTB8ZrbPtSAZq89SVndkfyN/T+m8=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "neuralfactz@gmail.com",
+    "first_name": "SAURABH",
+    "last_name": "YADAV",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2025-12-23T07:14:10.045Z",
+    "company_name": "saurabh",
+    "role": "receiver",
+    "phone": "54545545",
+    "email": "neuralfactz@gmail.com",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "accounts.customuser",
+  "pk": 10,
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$DIZqtIZBa9S0X6748gzk8v$KASzVm8jh602NFlLOaGV/v3TEpBwA1Ol5Y47od+NJBY=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "yarchana784@gmail.com",
+    "first_name": "SAURABH",
+    "last_name": "YADAV",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2025-12-23T07:14:50.886Z",
+    "company_name": "saurabh",
+    "role": "receiver",
+    "phone": "54545545",
+    "email": "yarchana784@gmail.com",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "accounts.customuser",
+  "pk": 11,
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$BPLyLBNs9GHZLBSCUcfIna$DqaP0VlwKRI+Mq9oot8Q6dW1HDaPlicgUw4+jxTXy04=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "adarshbhai1231@gmail.com",
+    "first_name": "Ad",
+    "last_name": "Singh",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2025-12-23T11:38:59.218Z",
+    "company_name": "Adarsh",
+    "role": "receiver",
+    "phone": "8467850219",
+    "email": "adarshbhai1231@gmail.com",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "donations.donationdata",
+  "pk": 1,
+  "fields": {
+    "name": "vghv",
+    "email": "kjhj@gmail.com",
+    "contributionType": "Food Donation",
+    "imageName": "FINAL FLOWCHART.png",
+    "description": "dsfghj",
+    "message": "hello",
+    "created_at": "2025-12-21T08:45:24.663Z"
+  }
+},
+{
+  "model": "donations.donationdata",
+  "pk": 2,
+  "fields": {
+    "name": "saura",
+    "email": "s@gmail.com",
+    "contributionType": "Food Donation",
+    "imageName": "hLeaf.webp",
+    "description": "dfghjk",
+    "message": "1234567890",
+    "created_at": "2025-12-21T08:48:38.703Z"
+  }
+},
+{
+  "model": "donations.donationdata",
+  "pk": 3,
+  "fields": {
+    "name": "Saurabh",
+    "email": "s@gmail.com",
+    "contributionType": "Food Donation",
+    "imageName": "Screenshot 2025-09-05 114205.png",
+    "description": "from rest_framework.decorators import api_view\nfrom rest_framework.response import Response\n\n@api_view(['POST'])\ndef signup_view(request):\n    data = request.data   # ≡ƒæê React submitted data\n\n    email = data.get('email')\n    role = data.get('role')\n\n    print(\"EMAIL:\", email)\n    print(\"ROLE:\", role)\n\n    return Response({\n        \"message\": \"Data received successfully\",\n        \"email\": email,\n        \"role\": role\n    })",
+    "message": "from rest_framework.decorators import api_view\nfrom rest_framework.response import Response\n\n@api_view(['POST'])\ndef signup_view(request):\n    data = request.data   # ≡ƒæê React submitted data\n\n    email = data.get('email')\n    role = data.get('role')\n\n    print(\"EMAIL:\", email)\n    print(\"ROLE:\", role)\n\n    return Response({\n        \"message\": \"Data received successfully\",\n        \"email\": email,\n        \"role\": role\n    })",
+    "created_at": "2025-12-23T07:04:37.097Z"
+  }
+},
+{
+  "model": "donations.donationdata",
+  "pk": 4,
+  "fields": {
+    "name": "Saurabh",
+    "email": "s@gmail.com",
+    "contributionType": "Food Donation",
+    "imageName": "Screenshot 2025-09-05 114205.png",
+    "description": "from rest_framework.decorators import api_view\nfrom rest_framework.response import Response\n\n@api_view(['POST'])\ndef signup_view(request):\n    data = request.data   # ≡ƒæê React submitted data\n\n    email = data.get('email')\n    role = data.get('role')\n\n    print(\"EMAIL:\", email)\n    print(\"ROLE:\", role)\n\n    return Response({\n        \"message\": \"Data received successfully\",\n        \"email\": email,\n        \"role\": role\n    })",
+    "message": "from rest_framework.decorators import api_view\nfrom rest_framework.response import Response\n\n@api_view(['POST'])\ndef signup_view(request):\n    data = request.data   # ≡ƒæê React submitted data\n\n    email = data.get('email')\n    role = data.get('role')\n\n    print(\"EMAIL:\", email)\n    print(\"ROLE:\", role)\n\n    return Response({\n        \"message\": \"Data received successfully\",\n        \"email\": email,\n        \"role\": role\n    })",
+    "created_at": "2025-12-23T07:04:45.017Z"
+  }
+},
+{
+  "model": "donations.donationdata",
+  "pk": 5,
+  "fields": {
+    "name": "Saurabh",
+    "email": "s@gmail.com",
+    "contributionType": "Food Donation",
+    "imageName": "Screenshot 2025-09-05 114205.png",
+    "description": "from rest_framework.decorators import api_view\nfrom rest_framework.response import Response\n\n@api_view(['POST'])\ndef signup_view(request):\n    data = request.data   # ≡ƒæê React submitted data\n\n    email = data.get('email')\n    role = data.get('role')\n\n    print(\"EMAIL:\", email)\n    print(\"ROLE:\", role)\n\n    return Response({\n        \"message\": \"Data received successfully\",\n        \"email\": email,\n        \"role\": role\n    })",
+    "message": "from rest_framework.decorators import api_view\nfrom rest_framework.response import Response\n\n@api_view(['POST'])\ndef signup_view(request):\n    data = request.data   # ≡ƒæê React submitted data\n\n    email = data.get('email')\n    role = data.get('role')\n\n    print(\"EMAIL:\", email)\n    print(\"ROLE:\", role)\n\n    return Response({\n        \"message\": \"Data received successfully\",\n        \"email\": email,\n        \"role\": role\n    })",
+    "created_at": "2025-12-23T07:07:39.060Z"
+  }
+},
+{
+  "model": "donations.donationdata",
+  "pk": 6,
+  "fields": {
+    "name": "Saurabh",
+    "email": "asdfgh@gmail.com",
+    "contributionType": "Food Donation",
+    "imageName": "Screenshot 2025-09-05 114205.png",
+    "description": "sdfghj",
+    "message": "sdfghjk",
+    "created_at": "2025-12-23T07:16:01.450Z"
+  }
+},
+{
+  "model": "donations.donationdata",
+  "pk": 7,
+  "fields": {
+    "name": "Saurabh",
+    "email": "asdfgh@gmail.com",
+    "contributionType": "Food Donation",
+    "imageName": "Screenshot 2025-09-05 114205.png",
+    "description": "sdfghj",
+    "message": "sdfghjk",
+    "created_at": "2025-12-23T07:19:52.805Z"
+  }
+},
+{
+  "model": "donations.donationdata",
+  "pk": 8,
+  "fields": {
+    "name": "saurabh",
+    "email": "a@gmail.com",
+    "contributionType": "Food Donation",
+    "imageName": "Screenshot 2025-09-06 231131.png",
+    "description": "asdfghjkl;",
+    "message": "asdfghjkl",
+    "created_at": "2025-12-23T07:36:30.970Z"
+  }
+},
+{
+  "model": "donations.donationdata",
+  "pk": 9,
+  "fields": {
+    "name": "saurabh",
+    "email": "saurav000667@gmail.com",
+    "contributionType": "Food Donation",
+    "imageName": "Screenshot 2025-09-06 231131.png",
+    "description": "asdfghjkl;",
+    "message": "asdfghjkl",
+    "created_at": "2025-12-23T07:43:06.734Z"
+  }
+},
+{
+  "model": "donations.donationdata",
+  "pk": 10,
+  "fields": {
+    "name": "saurabhjiiii",
+    "email": "saurav000667@gmail.com",
+    "contributionType": "Food Donation",
+    "imageName": "Screenshot 2025-09-06 231131.png",
+    "description": "asdfghjkl;asrdtfyguhjkl",
+    "message": "asdfghjklrtfgvhbnmlli987678987654",
+    "created_at": "2025-12-23T07:44:38.957Z"
+  }
+},
+{
+  "model": "donations.donationdata",
+  "pk": 11,
+  "fields": {
+    "name": "asdfg",
+    "email": "a@gmail.com",
+    "contributionType": "Money Donation",
+    "imageName": "Screenshot 2025-09-10 225251.png",
+    "description": ".thankyou-container {\n  min-height: 100vh;\n  background: radial-gradient(\n    circle at top,\n    #0b1224 0%,\n    #050b1a 45%,\n    #020617 100%\n  );\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  padding: 20px;\n  color: #e5e7eb;\n}\n\n.thankyou-card {\n  background: rgba(255, 255, 255, 0.05);\n  backdrop-filter: blur(12px);\n  border-radius: 20px;\n  padding: 40px 35px;\n  max-width: 500px;\n  width: 100%;\n  text-align: center;\n  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);\n  animation: fadeInUp 0.8s ease-in-out;\n}\n\n.check-icon {\n  width: 70px;\n  height: 70px;\n  background: #22c55e;\n  color: #ffffff;\n  font-size: 2rem;\n  font-weight: bold;\n  border-radius: 50%;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  margin: 0 auto 20px;\n}\n\n.thankyou-card h1 {\n  font-size: 1.8rem;\n  margin-bottom: 15px;\n  color: #f9fafb;\n}\n\n.thankyou-card p {\n  font-size: 1rem;\n  line-height: 1.6;\n  margin-bottom: 12px;\n  color: #d1d5db;\n}\n\n.highlight {\n  color: #fbbf24;\n  font-weight: 600;\n}\n\n.btn-group {\n  margin-top: 25px;\n  display: flex;\n  gap: 15px;\n  justify-content: center;\n  flex-wrap: wrap;\n}\n\n.btn {\n  padding: 12px 22px;\n  border-radius: 999px;\n  font-size: 0.95rem;\n  text-decoration: none;\n  transition: all 0.3s ease;\n}\n\n.primary-btn {\n  background: #6366f1;\n  color: #ffffff;\n}\n\n.primary-btn:hover {\n  background: #4f46e5;\n  transform: translateY(-2px);\n}\n\n.secondary-btn {\n  border: 1px solid #6366f1;\n  color: #6366f1;\n}\n\n.secondary-btn:hover {\n  background: #6366f1;\n  color: #ffffff;\n  transform: translateY(-2px);\n}\n\n/* Animation */\n@keyframes fadeInUp {\n  from {\n    opacity: 0;\n    transform: translateY(30px);\n  }\n  to {\n    opacity: 1;\n    transform: translateY(0);\n  }\n}",
+    "message": "asdfghj",
+    "created_at": "2025-12-23T08:16:03.563Z"
+  }
+},
+{
+  "model": "donations.donationdata",
+  "pk": 12,
+  "fields": {
+    "name": "asd",
+    "email": "a@gmail.com",
+    "contributionType": "Food Donation",
+    "imageName": "Screenshot 2025-09-06 231131.png",
+    "description": "asdfghas",
+    "message": "asdfg",
+    "created_at": "2025-12-23T08:19:03.011Z"
+  }
+},
+{
+  "model": "donations.donationdata",
+  "pk": 13,
+  "fields": {
+    "name": "asdfghjk",
+    "email": "a@gmail.com",
+    "contributionType": "Food Donation",
+    "imageName": "Screenshot 2025-09-05 114205.png",
+    "description": "sdf",
+    "message": "sdf",
+    "created_at": "2025-12-23T08:20:32.941Z"
+  }
+},
+{
+  "model": "donations.donationdata",
+  "pk": 14,
+  "fields": {
+    "name": "asdfgh",
+    "email": "a@gmail.com",
+    "contributionType": "Food Donation",
+    "imageName": "Screenshot 2025-09-10 225251.png",
+    "description": "asdfghj",
+    "message": "asdfgh",
+    "created_at": "2025-12-23T08:28:17.462Z"
+  }
+},
+{
+  "model": "donations.donationdata",
+  "pk": 15,
+  "fields": {
+    "name": "sdfgh",
+    "email": "s@gmail.com",
+    "contributionType": "Food Donation",
+    "imageName": "Screenshot 2025-08-30 121902.png",
+    "description": "sdfg",
+    "message": "asdfgh",
+    "created_at": "2025-12-23T08:30:48.905Z"
+  }
+},
+{
+  "model": "donations.donationdata",
+  "pk": 16,
+  "fields": {
+    "name": "Adarsh",
+    "email": "adarshbhai1231@gmail.com",
+    "contributionType": "Food Donation",
+    "imageName": "Screenshot 2025-08-30 123835.png",
+    "description": "qwertyuiop;lkjhgfdsadzxghcjlbnmgdsfjklkhfddghjgda",
+    "message": "sauabh madevgfr ncnnnuyhfrgjidfzpp",
+    "created_at": "2025-12-23T11:08:52.431Z"
+  }
+},
+{
+  "model": "donations.donationdata",
+  "pk": 17,
+  "fields": {
+    "name": "asdf",
+    "email": "acccc@gmail.com",
+    "contributionType": "Money Donation",
+    "imageName": "Screenshot 2025-09-10 225251.png",
+    "description": "fghjkloi87654ewsdcvbnm,",
+    "message": "asdfghj",
+    "created_at": "2025-12-23T11:39:39.143Z"
+  }
+},
+{
+  "model": "donations.donationdata",
+  "pk": 18,
+  "fields": {
+    "name": "asdf",
+    "email": "acccc@gmail.com",
+    "contributionType": "Money Donation",
+    "imageName": "Screenshot 2025-09-10 225251.png",
+    "description": "fghjkloi87654ewsdcvbnm,",
+    "message": "asdfghj",
+    "created_at": "2025-12-23T11:39:44.954Z"
+  }
+},
+{
+  "model": "donations.donationdata",
+  "pk": 19,
+  "fields": {
+    "name": "asdf",
+    "email": "acccc@gmail.com",
+    "contributionType": "Money Donation",
+    "imageName": "Screenshot 2025-09-10 225251.png",
+    "description": "fghjkloi87654ewsdcvbnm,",
+    "message": "asdfghj",
+    "created_at": "2025-12-23T11:39:46.347Z"
+  }
+},
+{
+  "model": "donations.donationdata",
+  "pk": 20,
+  "fields": {
+    "name": "sadfgh",
+    "email": "assdd@gmail.com",
+    "contributionType": "Money Donation",
+    "imageName": "Screenshot 2025-09-10 225251.png",
+    "description": "asasadfghjk",
+    "message": "234567890-",
+    "created_at": "2025-12-23T11:40:22.841Z"
+  }
+},
+{
+  "model": "donations.donationdata",
+  "pk": 21,
+  "fields": {
+    "name": "sadfgh",
+    "email": "assdd@gmail.com",
+    "contributionType": "Money Donation",
+    "imageName": "Screenshot 2025-09-10 225251.png",
+    "description": "asasadfghjk",
+    "message": "234567890-",
+    "created_at": "2025-12-23T11:41:55.073Z"
+  }
+},
+{
+  "model": "donations.donationdata",
+  "pk": 22,
+  "fields": {
+    "name": "Saurabh",
+    "email": "a2@gmail.com",
+    "contributionType": "Money Donation",
+    "imageName": "Screenshot 2025-08-30 121902.png",
+    "description": "asdfghj",
+    "message": "dfghjk,",
+    "created_at": "2025-12-23T11:43:37.956Z"
+  }
+},
+{
+  "model": "donations.donationdata",
+  "pk": 23,
+  "fields": {
+    "name": "devanshu",
+    "email": "saurav000667@gmail.com",
+    "contributionType": "Volunteer",
+    "imageName": "Screenshot 2025-08-30 121902.png",
+    "description": "devanshu gandu",
+    "message": "asdfghjkl;qredsazadfvdvcbbbv",
+    "created_at": "2025-12-23T11:46:32.488Z"
+  }
+},
+{
+  "model": "donations.donationdata",
+  "pk": 24,
+  "fields": {
+    "name": "Saurabh",
+    "email": "saurav000667@gmail.com",
+    "contributionType": "Food Donation",
+    "imageName": "Screenshot 2025-09-05 114205.png",
+    "description": "asdfghjkl</Link></Link></Link></Link></Link></Link></Link>",
+    "message": "</Link></Link></Link></Link></Link></Link></Link>",
+    "created_at": "2025-12-23T21:41:49.508Z"
+  }
+},
+{
+  "model": "donations.donationdata",
+  "pk": 25,
+  "fields": {
+    "name": "New mail",
+    "email": "neuralfactz@gmail.com",
+    "contributionType": "Food Donation",
+    "imageName": "bg-image-ad.jpg",
+    "description": "nbtl atcb qlft bnwb",
+    "message": "nbtl atcb qlft bnwb",
+    "created_at": "2025-12-23T22:21:54.057Z"
+  }
+}
+]

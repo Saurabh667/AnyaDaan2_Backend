@@ -31,18 +31,19 @@ class DonationCreateView(APIView):
                 subject = "New Contribution Available – AnyaDaan 🤍"
 
             message = f"""
-                A new contribution has been submitted on AnyaDaan.
+A new contribution has been submitted on AnyaDaan.
 
-                Name: {donation.name}
-                Email: {donation.email}
-                Contribution Type: {donation.contributionType}
-                Description:
-                {donation.description}
-                Message:
-                {donation.message}
-                Request Time:{donation.created_at}
+Name: {donation.name}
+Email: {donation.email}
+Contribution Type: {donation.contributionType}
 
-                You can contact to recieve the donation.
+Description:{donation.description}
+
+Message:{donation.message}
+
+
+Request Time:{donation.created_at}
+You can contact to recieve the donation.
                 """
             send_mail(
                     subject=subject,
@@ -79,14 +80,38 @@ Making kindness easier 🤍
     
 
 
-receivers = CustomUser.objects.filter(role='receiver')
-print(receivers)
+# receivers = CustomUser.objects.filter(role='receiver')
+# print(receivers)
 
-receiversEmail=list(
-    CustomUser.objects
-    .filter(role='receiver')
-    .values_list('email', flat=True)
-)
-print(receiversEmail)
+# receiversEmail=list(
+#     CustomUser.objects
+#     .filter(role='receiver')
+#     .values_list('email', flat=True)
+# )
+# print(receiversEmail)
 
 
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+from django.utils import timezone
+from datetime import timedelta
+from .models import donationData
+from .serializers import DonationDataSerializer
+
+
+@api_view(['GET'])
+
+def donations_last_24_hours(request):
+    # if request.user.role != "receiver":
+    #     return Response(
+    #         {"error": "Unauthorized"},
+    #         status=403
+    #     )
+    last_24_hours = timezone.now() - timedelta(hours=24)
+
+    donations = donationData.objects.filter(
+        created_at__gte=last_24_hours
+    ).order_by('-created_at')
+
+    serializer = DonationDataSerializer(donations, many=True)
+    return Response(serializer.data)
