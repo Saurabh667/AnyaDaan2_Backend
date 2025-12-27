@@ -50,7 +50,7 @@ Thank you for joining us and being part of this journey.
                             Making kindness easier 🤍
                         """
 
-            # Debug log
+            
             print(f"📧 Sending OTP {otp} to {email}")
 
             send_mail(
@@ -64,7 +64,7 @@ Thank you for joining us and being part of this journey.
             return JsonResponse(
                 {
                     "message": "OTP sent successfully",
-                    "otp": otp   # ⚠️ remove in production
+                    "otp": otp   
                 },
                 status=200
             )
