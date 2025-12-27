@@ -5,13 +5,14 @@ from .models import donationData
 class DonationDataSerializer(serializers.ModelSerializer):
     class Meta:
         model = donationData
-        fields = [
-            'id',
-            'name',
-            'email',
-            'contributionType',
-            'imageName',
-            'description',
-            'message',
-            'created_at',
-        ]
+        # fields = [
+        #     'id',
+        #     'name',
+        #     'email',
+        #     'contributionType',
+        #     'imageName',
+        #     'description',
+        #     'message',
+        #     'created_at',
+        # ]
+        fields="__all__"
