@@ -15,6 +15,4 @@ urlpatterns = [
     path("donations/<int:id>/accept/", donationViews.accept_donation),
     path("contributions/board",donationViews.contribution_board),
     
-
-
 ]

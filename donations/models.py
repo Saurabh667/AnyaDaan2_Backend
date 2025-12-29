@@ -9,6 +9,12 @@ class donationData(models.Model):
     imageName = models.CharField(max_length=100, blank=True, default="")
     description = models.TextField(blank=True)
     message = models.TextField(blank=True)
+    addres = models.TextField(default="")
+    city = models.CharField(max_length=100,default="")
+    pincode = models.CharField(max_length=10,default=000000)
+    latitude = models.FloatField(null=True, blank=True)
+    longitude = models.FloatField(null=True, blank=True)
+
     created_at = models.DateTimeField(auto_now_add=True)
 
     status = models.CharField(
