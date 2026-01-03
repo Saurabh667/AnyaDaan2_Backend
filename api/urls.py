@@ -3,6 +3,7 @@ from accounts import views as UserViews
 from accounts import views
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 from donations import views as donationViews
+from payments import views as paymentsViews
 
 
 urlpatterns = [
@@ -14,5 +15,7 @@ urlpatterns = [
     path("donations/recent/", donationViews.donations_last_24_hours),
     path("donations/<int:id>/accept/", donationViews.accept_donation),
     path("contributions/board",donationViews.contribution_board),
-    
+    path("create-order/",paymentsViews.create_order),
+    path("verify-payment/", paymentsViews.verify_payment),
+
 ]

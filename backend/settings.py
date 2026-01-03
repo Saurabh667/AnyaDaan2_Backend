@@ -21,7 +21,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # DEBUG = True
 SECRET_KEY = os.getenv("SECRET_KEY")
 DEBUG = os.getenv("DEBUG") == "True"
-
+RAZORPAY_KEY_ID = os.getenv("RAZORPAY_KEY_ID")
+RAZORPAY_KEY_SECRET = os.getenv("RAZORPAY_KEY_SECRET")
 
 # ALLOWED_HOSTS = []
 ALLOWED_HOSTS = ["*"]
@@ -42,7 +43,11 @@ INSTALLED_APPS = [
     "corsheaders",
     'api',
     'donations',
+    'payments',
     
+]
+INSTALLED_APPS += [
+    "whitenoise.runserver_nostatic",
 ]
 
 # MIDDLEWARE = [

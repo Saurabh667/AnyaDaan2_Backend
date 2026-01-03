@@ -1,1 +1,1 @@
-web: gunicorn anyadaan.wsgi:application
+web: gunicorn anyadaan.wsgi
