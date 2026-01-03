@@ -228,8 +228,13 @@ DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 #     os.getenv("FRONTEND_URL"),
 # ]
 # CORS_ALLOWED_ORIGINS = True
+
 CORS_ALLOW_ALL_ORIGINS = True
 CORS_ALLOW_CREDENTIALS = True
+CSRF_TRUSTED_ORIGINS = [
+    "http://localhost:5173",
+    "https://anyadaan2-backend-1.onrender.com",
+]
 
 # FRONTEND_URL = os.getenv("FRONTEND_URL")
 # if FRONTEND_URL:
