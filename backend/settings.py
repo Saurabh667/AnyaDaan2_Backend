@@ -154,11 +154,11 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 #         ssl_require=True
 #     )
 # }
-DATABASES = {
-    "default": dj_database_url.parse(
-        os.environ.get("DATABASE_URL")
-    )
-}
+# DATABASES = {
+#     "default": dj_database_url.parse(
+#         os.environ.get("DATABASE_URL")
+#     )
+# }
 
 
 # Password validation
@@ -212,19 +212,37 @@ AUTH_USER_MODEL = 'accounts.CustomUser'
 # EMAIL_HOST_PASSWORD = 'nbtlatcbqlftbnwb'
 # DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_BACKEND=os.getenv("EMAIL_BACKEND")
-# EMAIL_HOST = 'smtp.gmail.com'
-# EMAIL_PORT = 587
-# EMAIL_USE_TLS = True
-EMAIL_HOST=os.getenv("EMAIL_HOST")
-EMAIL_PORT = os.getenv('EMAIL_PORT')
-EMAIL_USE_TLS = os.getenv('EMAIL_USE_TLS')
-EMAIL_HOST_USER = os.getenv("EMAIL_HOST_USER")
-EMAIL_HOST_PASSWORD = os.getenv("EMAIL_HOST_PASSWORD")
-DEFAULT_FROM_EMAIL = os.getenv('DEFAULT_FROM_EMAIL')
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# EMAIL_BACKEND=os.getenv("EMAIL_BACKEND")
+# # EMAIL_HOST = 'smtp.gmail.com'
+# # EMAIL_PORT = 587
+# # EMAIL_USE_TLS = True
+# EMAIL_HOST=os.getenv("EMAIL_HOST")
+# EMAIL_PORT = os.getenv('EMAIL_PORT')
+# EMAIL_USE_TLS = os.getenv('EMAIL_USE_TLS')
+# EMAIL_HOST_USER = os.getenv("EMAIL_HOST_USER")
+# EMAIL_HOST_PASSWORD = os.getenv("EMAIL_HOST_PASSWORD")
+# DEFAULT_FROM_EMAIL = os.getenv('DEFAULT_FROM_EMAIL')
 # DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
+# ================= EMAIL CONFIG (FIXED) =================
+
+EMAIL_BACKEND = os.getenv(
+    "EMAIL_BACKEND",
+    "django.core.mail.backends.smtp.EmailBackend"
+)
+
+EMAIL_HOST = os.getenv("EMAIL_HOST")
+
+EMAIL_PORT = int(os.getenv("EMAIL_PORT", 587))   
+
+EMAIL_USE_TLS = os.getenv("EMAIL_USE_TLS", "True") == "True" 
+EMAIL_HOST_USER = os.getenv("EMAIL_HOST_USER")
+EMAIL_HOST_PASSWORD = os.getenv("EMAIL_HOST_PASSWORD")
+
+DEFAULT_FROM_EMAIL = os.getenv("DEFAULT_FROM_EMAIL")
+
+# ========================================================
 
 
 # CORS_ALLOWED_ORIGINS = [
