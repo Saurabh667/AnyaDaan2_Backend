@@ -45,7 +45,7 @@ Message:{donation.message}
 Request Time:{donation.created_at}
 You can contact to recieve the donation.
                 """
-            from_email=os.getenv("DEFAULT_FROM_EMAIL") or os.getenv("EMAIL_HOST_USER"),
+            from_email=os.getenv("DEFAULT_FROM_EMAIL") or os.getenv("EMAIL_HOST_USER")
             send_mail(
                     subject=subject,
                     message=message,
@@ -143,7 +143,7 @@ def accept_donation(request, id):
 
         donation.company_name = receiversCompanyData  # OR your company name
         donation.save()
-        from_email=os.getenv("DEFAULT_FROM_EMAIL") or os.getenv("EMAIL_HOST_USER"),
+        from_email=os.getenv("DEFAULT_FROM_EMAIL") or os.getenv("EMAIL_HOST_USER")
         send_mail(
             subject="Your contribution has been accepted",
             message=(

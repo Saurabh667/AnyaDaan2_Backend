@@ -178,7 +178,7 @@ def verify_payment(request):
 
         # ❌ BUG FIX: recipient_list must be EMAIL, not name
         # ✅ CHANGE 8: Fix email sending
-        from_email=os.getenv("DEFAULT_FROM_EMAIL") or os.getenv("EMAIL_HOST_USER"),
+        from_email=os.getenv("DEFAULT_FROM_EMAIL") or os.getenv("EMAIL_HOST_USER")
         send_mail(
             subject="Thank you for your contribution 🤍",
             message=f"""
