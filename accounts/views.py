@@ -9,6 +9,7 @@ from .models import CustomUser
 from .serializers import SignupSerializer
 import json
 import random
+import os
 
 
 class RegisterView(generics.CreateAPIView):
@@ -52,19 +53,18 @@ Thank you for joining us and being part of this journey.
 
             
             print(f"📧 Sending OTP {otp} to {email}")
-
+            from_email=os.getenv("DEFAULT_FROM_EMAIL") or os.getenv("EMAIL_HOST_USER"),
             send_mail(
                 subject="Welcome to AnyaDaan – Thank You for Joining Us",
                 message=message,
-                from_email=settings.DEFAULT_FROM_EMAIL,
+                from_email=from_email,
                 recipient_list=[email],
                 fail_silently=False,
             )
 
             return JsonResponse(
                 {
-                    "message": "OTP sent successfully",
-                    "otp": otp   
+                    "message": "OTP sent successfully"
                 },
                 status=200
             )

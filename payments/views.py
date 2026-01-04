@@ -96,6 +96,7 @@ from .razorpay_client import razorpay_client
 from .models import Payment
 from razorpay.errors import SignatureVerificationError
 from django.core.mail import send_mail
+import os
 
 
 # ❌ You already have razorpay_client, no need for duplicate client
@@ -177,6 +178,7 @@ def verify_payment(request):
 
         # ❌ BUG FIX: recipient_list must be EMAIL, not name
         # ✅ CHANGE 8: Fix email sending
+        from_email=os.getenv("DEFAULT_FROM_EMAIL") or os.getenv("EMAIL_HOST_USER"),
         send_mail(
             subject="Thank you for your contribution 🤍",
             message=f"""
@@ -189,7 +191,7 @@ Warm regards,
 Team AnyaDaan
 Making kindness easier 🤍
             """,
-            from_email=settings.DEFAULT_FROM_EMAIL,
+            from_email=from_email,
             recipient_list=[payment.email],  # ✅ FIXED
             fail_silently=False,
         )

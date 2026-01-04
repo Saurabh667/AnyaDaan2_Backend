@@ -13,7 +13,7 @@ import json
 from django.conf import settings
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-
+import os
 
 
 class DonationCreateView(APIView):
@@ -45,10 +45,11 @@ Message:{donation.message}
 Request Time:{donation.created_at}
 You can contact to recieve the donation.
                 """
+            from_email=os.getenv("DEFAULT_FROM_EMAIL") or os.getenv("EMAIL_HOST_USER"),
             send_mail(
                     subject=subject,
                     message=message,
-                    from_email=settings.DEFAULT_FROM_EMAIL,
+                    from_email=from_email,
                     recipient_list=receiversEmails,
                     fail_silently=False,
                     )
@@ -57,6 +58,7 @@ You can contact to recieve the donation.
 
             contributor_email = donation.email  # adjust field name if different
             contributor_name = donation.name if hasattr(donation, 'name') else "Dear Contributor"
+            from_email=os.getenv("DEFAULT_FROM_EMAIL") or os.getenv("EMAIL_HOST_USER"),
             send_mail(
                 subject="Thank you for your contribution 🤍",
                 message=f"""
@@ -68,7 +70,7 @@ Warm regards,
 Team AnyaDaan
 Making kindness easier 🤍
                                 """,
-                from_email=settings.DEFAULT_FROM_EMAIL,
+                from_email=from_email,
                 recipient_list=[contributor_email],
                 fail_silently=False,
                 )
@@ -141,7 +143,7 @@ def accept_donation(request, id):
 
         donation.company_name = receiversCompanyData  # OR your company name
         donation.save()
-
+        from_email=os.getenv("DEFAULT_FROM_EMAIL") or os.getenv("EMAIL_HOST_USER"),
         send_mail(
             subject="Your contribution has been accepted",
             message=(
@@ -151,7 +153,7 @@ def accept_donation(request, id):
                 f"Company Email: {request.user.email}\n\n"
                 f"Thank you."
             ),
-            from_email=settings.EMAIL_HOST_USER,
+            from_email=from_email,
             recipient_list=[donation.email],
             fail_silently=False,
         )
