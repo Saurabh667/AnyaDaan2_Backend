@@ -154,11 +154,11 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 #         ssl_require=True
 #     )
 # }
-# DATABASES = {
-#     "default": dj_database_url.parse(
-#         os.environ.get("DATABASE_URL")
-#     )
-# }
+DATABASES = {
+    "default": dj_database_url.parse(
+        os.environ.get("DATABASE_URL")
+    )
+}
 
 
 # Password validation
