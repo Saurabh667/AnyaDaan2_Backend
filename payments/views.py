@@ -1,91 +1,4 @@
-# from django.shortcuts import render
 
-# # Create your views here.
-# import razorpay
-# from django.conf import settings
-# from rest_framework.decorators import api_view
-# from rest_framework.response import Response
-# from .razorpay_client import razorpay_client
-# from .models import Payment
-
-
-# client = razorpay.Client(
-#     auth=(settings.RAZORPAY_KEY_ID, settings.RAZORPAY_KEY_SECRET)
-# )
-# @api_view(['POST'])
-# def create_order(request):
-#     amount = request.data.get("amount")  # rupees
-#     name = request.data.get("name")
-#     email = request.data.get("email")
-
-#     order = razorpay_client.order.create({
-#         "amount": int(amount) * 100,  # paise
-#         "currency": "INR",
-#         "payment_capture": 1
-#     })
-#     Payment.objects.create(
-#         name=name,
-#         email=email,
-#         amount=amount,
-#         razorpay_order_id=order["id"],
-#         status="created"
-#     )
-
-#     return Response({
-#         "order_id": order["id"],
-#         "amount": order["amount"],
-#     })
-
-
-# # to save the payment data 
-
-# from razorpay.errors import SignatureVerificationError
-# from django.core.mail import send_mail
-
-# @api_view(["POST"])
-# def verify_payment(request):
-#     data = request.data
-
-#     try:
-#         client.utility.verify_payment_signature({
-#             "razorpay_order_id": data["razorpay_order_id"],
-#             "razorpay_payment_id": data["razorpay_payment_id"],
-#             "razorpay_signature": data["razorpay_signature"],
-#         })
-
-#         payment = Payment.objects.get(
-#             razorpay_order_id=data["razorpay_order_id"]
-#         )
-
-#         payment.razorpay_payment_id = data["razorpay_payment_id"]
-#         payment.razorpay_signature = data["razorpay_signature"]
-#         payment.status = "success"
-#         payment.save()
-#         send_mail(
-#                 subject="Thank you for your contribution 🤍",
-#                 message=f"""
-# Hello {payment.name},
-#     Thank you for your kind contribution on AnyaDaan.
-# Your generosity can make a real difference in someone’s life.
-# We truly appreciate your support and willingness to help others.
-# Warm regards,
-# Team AnyaDaan
-# Making kindness easier 🤍
-#                                 """,
-#                 from_email=settings.DEFAULT_FROM_EMAIL,
-#                 recipient_list=[payment.name],
-#                 fail_silently=False,
-#                 )
-#         print('thanking mail send to ',payment.email)
-
-#         return Response({"status": "Payment verified"})
-
-#     except SignatureVerificationError:
-#         Payment.objects.filter(
-#             razorpay_order_id=data["razorpay_order_id"]
-#         ).update(status="failed")
-
-#         return Response({"status": "Payment verification failed"}, status=400)
 
 from django.shortcuts import render
 import razorpay
@@ -97,12 +10,8 @@ from .models import Payment
 from razorpay.errors import SignatureVerificationError
 from django.core.mail import send_mail
 import os
+import requests
 
-
-# ❌ You already have razorpay_client, no need for duplicate client
-# client = razorpay.Client(...)   ❌ REMOVED
-
-# ✅ CHANGE 1: Use single client everywhere
 client = razorpay_client
 
 
@@ -179,9 +88,28 @@ def verify_payment(request):
         # ❌ BUG FIX: recipient_list must be EMAIL, not name
         # ✅ CHANGE 8: Fix email sending
         from_email=os.getenv("DEFAULT_FROM_EMAIL") or os.getenv("EMAIL_HOST_USER")
-        send_mail(
-            subject="Thank you for your contribution 🤍",
-            message=f"""
+        SENDGRID_API_KEY = os.getenv("EMAIL_HOST_PASSWORD")   # unchanged
+        FROM_EMAIL = from_email 
+        response = requests.post(
+    "https://api.sendgrid.com/v3/mail/send",
+    headers={
+        "Authorization": f"Bearer {SENDGRID_API_KEY}",
+        "Content-Type": "application/json",
+    },
+    json={
+        "personalizations": [
+            {
+                "to": [{"email": payment.email}]
+            }
+        ],
+        "from": {
+            "email": FROM_EMAIL
+        },
+        "subject": "Thank you for your contribution 🤍",
+        "content": [
+            {
+                "type": "text/plain",
+                "value": f"""
 Hello {payment.name},
 
 Thank you for your kind contribution on AnyaDaan.
@@ -190,25 +118,44 @@ Your generosity can make a real difference in someone’s life.
 Warm regards,
 Team AnyaDaan
 Making kindness easier 🤍
-            """,
-            from_email=from_email,
-            recipient_list=[payment.email],  # ✅ FIXED
-            fail_silently=False,
-        )
+                """
+            }
+        ],
+    },
+    timeout=10,
+)
 
-        print("Thank you email sent to:", payment.email)
+        if response.status_code not in (200, 202):
+            raise Exception(response.text)
+#         send_mail(
+#             subject="Thank you for your contribution 🤍",
+#             message=f"""
+# Hello {payment.name},
+
+# Thank you for your kind contribution on AnyaDaan.
+# Your generosity can make a real difference in someone’s life.
+
+# Warm regards,
+# Team AnyaDaan
+# Making kindness easier 🤍
+#             """,
+#             from_email=from_email,
+#             recipient_list=[payment.email],  # ✅ FIXED
+#             fail_silently=False,
+#         )
+
+#         print("Thank you email sent to:", payment.email)
 
         return Response({"status": "Payment verified successfully"})
 
     except Payment.DoesNotExist:
-        # ✅ CHANGE 9: Handle missing DB record
+        
         return Response(
             {"error": "Payment record not found"},
             status=404
         )
 
     except SignatureVerificationError:
-        # ✅ CHANGE 10: Mark payment as failed safely
         Payment.objects.filter(
             razorpay_order_id=razorpay_order_id
         ).update(status="failed")
@@ -219,7 +166,6 @@ Making kindness easier 🤍
         )
 
     except Exception as e:
-        # ✅ CHANGE 11: Prevent 500 crash
         return Response(
             {"error": str(e)},
             status=500

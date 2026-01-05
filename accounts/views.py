@@ -79,6 +79,7 @@
 #         {"error": "Only POST method allowed"},
 #         status=405
 #     )
+
 from django.shortcuts import render
 from rest_framework import generics, status
 from rest_framework.response import Response
@@ -153,7 +154,7 @@ Making kindness easier 🤍
                 timeout=10,
             )
 
-            if response.status_code not in (200, 202):              # 🔴 CHANGED
+            if response.status_code not in (200, 202):             
                 return JsonResponse(
                     {"error": response.text},
                     status=500

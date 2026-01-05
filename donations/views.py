@@ -14,10 +14,12 @@ from django.conf import settings
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 import os
+import requests
 
 
 class DonationCreateView(APIView):
     def post(self, request):
+
         serializer = DonationDataSerializer(data=request.data)
         if serializer.is_valid():
             # serializer.save()
@@ -46,22 +48,41 @@ Request Time:{donation.created_at}
 You can contact to recieve the donation.
                 """
             from_email=os.getenv("DEFAULT_FROM_EMAIL") or os.getenv("EMAIL_HOST_USER")
-            send_mail(
-                    subject=subject,
-                    message=message,
-                    from_email=from_email,
-                    recipient_list=receiversEmails,
-                    fail_silently=False,
-                    )
-            print(receiversEmails,'requests are send')
+            SENDGRID_API_KEY = os.getenv("EMAIL_HOST_PASSWORD")   # unchanged
+            FROM_EMAIL = from_email  
+            response = requests.post(
+    "https://api.sendgrid.com/v3/mail/send",
+    headers={
+        "Authorization": f"Bearer {SENDGRID_API_KEY}",
+        "Content-Type": "application/json",
+    },
+    json={
+        "personalizations": [
+            {
+                "to": [{"email": e} for e in receiversEmails]
+            }
+        ],
+        "from": {
+            "email": FROM_EMAIL
+        },
+        "subject": subject,
+        "content": [
+            {
+                "type": "text/plain",
+                "value": message
+            }
+        ],
+    },
+    timeout=10,
+)
+
+            if response.status_code not in (200, 202):
+                raise Exception(response.text)
 
 
             contributor_email = donation.email  # adjust field name if different
             contributor_name = donation.name if hasattr(donation, 'name') else "Dear Contributor"
-            from_email=os.getenv("DEFAULT_FROM_EMAIL") or os.getenv("EMAIL_HOST_USER"),
-            send_mail(
-                subject="Thank you for your contribution 🤍",
-                message=f"""
+            thanksMessage=f"""
 Hello {contributor_name},
     Thank you for your kind contribution on AnyaDaan.
 Your generosity can make a real difference in someone’s life.
@@ -69,11 +90,32 @@ We truly appreciate your support and willingness to help others.
 Warm regards,
 Team AnyaDaan
 Making kindness easier 🤍
-                                """,
-                from_email=from_email,
-                recipient_list=[contributor_email],
-                fail_silently=False,
-                )
+                                """
+            SENDGRID_API_KEY = os.getenv("EMAIL_HOST_PASSWORD")
+            from_email=os.getenv("DEFAULT_FROM_EMAIL") or os.getenv("EMAIL_HOST_USER")
+            response = requests.post(
+    "https://api.sendgrid.com/v3/mail/send",
+    headers={
+        "Authorization": f"Bearer {SENDGRID_API_KEY}",
+        "Content-Type": "application/json",
+    },
+    json={
+        "personalizations": [
+            {"to": [{"email": contributor_email}]}
+        ],
+        "from": {"email": from_email},
+        "subject": "Thank you for your contribution 🤍",
+        "content": [
+            {
+                "type": "text/plain",
+                "value": thanksMessage
+            }
+        ],
+    },
+    timeout=10,
+)            
+            if response.status_code not in (200, 202):
+                raise Exception(response.text)
             print('thanking mail send to ',contributor_email)
 
 
@@ -143,20 +185,43 @@ def accept_donation(request, id):
 
         donation.company_name = receiversCompanyData  # OR your company name
         donation.save()
+        SENDGRID_API_KEY = os.getenv("EMAIL_HOST_PASSWORD")   
         from_email=os.getenv("DEFAULT_FROM_EMAIL") or os.getenv("EMAIL_HOST_USER")
-        send_mail(
-            subject="Your contribution has been accepted",
-            message=(
-                f"Hello {donation.name},\n\n"
-                f"Your contribution has been accepted by {donation.company_name}.\n"
-                f"Message from company:{message_to_donor}\n"
-                f"Company Email: {request.user.email}\n\n"
-                f"Thank you."
-            ),
-            from_email=from_email,
-            recipient_list=[donation.email],
-            fail_silently=False,
-        )
+        response = requests.post(
+    "https://api.sendgrid.com/v3/mail/send",
+    headers={
+        "Authorization": f"Bearer {SENDGRID_API_KEY}",
+        "Content-Type": "application/json",
+    },
+    json={
+        "personalizations": [
+            {
+                "to": [{"email": donation.email}]
+            }
+        ],
+        "from": {
+            "email": from_email
+        },
+        "subject": "Your contribution has been accepted",
+        "content": [
+            {
+                "type": "text/plain",
+                "value": (
+                    f"Hello {donation.name},\n\n"
+                    f"Your contribution has been accepted by {donation.company_name}.\n"
+                    f"Message from company:{message_to_donor}\n"
+                    f"Company Email: {request.user.email}\n\n"
+                    f"Thank you."
+                )
+            }
+        ],
+    },
+    timeout=10,
+)
+
+        if response.status_code not in (200, 202):
+            raise Exception(response.text)
+        
 
         return Response({"message": "Accepted successfully"}, status=200)
 
