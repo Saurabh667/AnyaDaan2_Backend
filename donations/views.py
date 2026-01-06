@@ -85,6 +85,9 @@ class DonationCreateView(APIView):
                 <tr>
                   <td style="padding:8px 0;"><strong>🕒 Request Time:</strong> {donation.created_at}</td>
                 </tr>
+                <tr>
+                  <td style="padding:8px 0;"><strong>Link:</strong> https://anya-daan2-frontend.vercel.app/recentDonations</td>
+                </tr>
               </table>
 
               <!-- Description -->
@@ -219,6 +222,7 @@ class DonationCreateView(APIView):
                 Warm regards,<br>
                 <strong>Team AnyaDaan</strong><br>
                 <span style="color:#16a34a;">Making kindness easier 🤍</span>
+                
               </p>
             </td>
           </tr>
