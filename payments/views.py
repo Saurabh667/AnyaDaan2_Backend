@@ -108,17 +108,87 @@ def verify_payment(request):
         "subject": "Thank you for your contribution 🤍",
         "content": [
             {
-                "type": "text/plain",
-                "value": f"""
-Hello {payment.name},
+                "type": "text/html",
+                "value":f"""
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Thank You for Your Contribution</title>
+</head>
+<body style="margin:0;padding:0;background-color:#f3f4f6;font-family:Arial,Helvetica,sans-serif;">
 
-Thank you for your kind contribution on AnyaDaan.
-Your generosity can make a real difference in someone’s life.
+<table width="100%" cellpadding="0" cellspacing="0" style="padding:30px 0;">
+<tr>
+<td align="center">
 
-Warm regards,
-Team AnyaDaan
-Making kindness easier 🤍
-                """
+<table width="600" cellpadding="0" cellspacing="0"
+       style="background:#ffffff;border-radius:10px;
+              box-shadow:0 6px 18px rgba(0,0,0,0.08);overflow:hidden;">
+
+<!-- Header -->
+<tr>
+<td style="background:linear-gradient(135deg,#22c55e,#16a34a);
+           padding:26px;text-align:center;color:#ffffff;">
+<h2 style="margin:0;">💚 Thank You for Your Contribution</h2>
+<p style="margin-top:6px;font-size:14px;">
+Your kindness truly matters
+</p>
+</td>
+</tr>
+
+<!-- Body -->
+<tr>
+<td style="padding:28px;color:#111827;">
+
+<p style="font-size:16px;">
+Hello <strong>{payment.name}</strong>,
+</p>
+
+<p style="font-size:15px;line-height:1.7;color:#374151;">
+Thank you for your generous contribution on <strong>AnyaDaan</strong>.
+</p>
+
+<div style="margin:22px 0;padding:18px;
+            background:#ecfdf5;border-left:4px solid #22c55e;
+            border-radius:6px;">
+<p style="margin:0;font-size:14px;color:#065f46;">
+Your support helps reduce food waste and bring hope to those in need.
+Every contribution makes a meaningful impact.
+</p>
+</div>
+
+<p style="font-size:15px;line-height:1.7;color:#374151;">
+We truly appreciate your compassion and willingness to help others.
+</p>
+
+<p style="margin-top:24px;font-size:15px;">
+Warm regards,<br>
+<strong>Team AnyaDaan</strong><br>
+<span style="color:#16a34a;">Making kindness easier 🤍</span>
+</p>
+
+</td>
+</tr>
+
+<!-- Footer -->
+<tr>
+<td style="background:#f9fafb;padding:14px;text-align:center;
+           font-size:12px;color:#6b7280;">
+You’re receiving this email because you made a contribution on AnyaDaan.<br>
+© 2026 AnyaDaan • Together we care
+</td>
+</tr>
+
+</table>
+
+</td>
+</tr>
+</table>
+
+</body>
+</html>
+"""
             }
         ],
     },

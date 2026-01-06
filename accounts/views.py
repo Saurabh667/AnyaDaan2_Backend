@@ -116,15 +116,81 @@ def send_email_view(request):
             otp = random.randint(100000, 999999)
 
             message = """
-Hello,
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Welcome to AnyaDaan</title>
+  </head>
+  <body style="margin:0; padding:0; background-color:#f6f8fb; font-family: Arial, Helvetica, sans-serif;">
 
-Welcome to AnyaDaan! 🌱
-We’re really happy to have you with us.
-Your account has been successfully created, and you’re now part of a community that believes in helping others and making a positive impact.
+    <!-- Outer Wrapper -->
+    <table width="100%" cellpadding="0" cellspacing="0" style="background-color:#f6f8fb; padding:30px 0;">
+      <tr>
+        <td align="center">
 
-Warm regards,
-Team AnyaDaan
-Making kindness easier 🤍
+          <!-- Main Container -->
+          <table width="600" cellpadding="0" cellspacing="0" style="background-color:#ffffff; border-radius:6px; overflow:hidden; box-shadow:0 2px 6px rgba(0,0,0,0.08);">
+
+            <!-- Header -->
+            <tr>
+              <td style="background-color:#22c55e; padding:20px; text-align:center;">
+                <h1 style="color:#ffffff; margin:0; font-size:26px; letter-spacing:1px;">
+                  AnyaDaan
+                </h1>
+              </td>
+            </tr>
+
+            <!-- Content -->
+            <tr>
+              <td style="padding:35px 40px; color:#111827;">
+                <h2 style="margin-top:0; font-size:22px; color:#111827;">
+                  Welcome to AnyaDaan 🌱
+                </h2>
+
+                <p style="font-size:15px; line-height:1.7; color:#374151;">
+                  We’re really happy to have you with us.
+                </p>
+
+                <p style="font-size:15px; line-height:1.7; color:#374151;">
+                  Your account has been successfully created, and you’re now part of a
+                  community that believes in reducing food waste and helping people in need.
+                </p>
+
+                <p style="font-size:15px; line-height:1.7; color:#374151;">
+                  Through AnyaDaan, you can connect with donors and receivers, contribute to
+                  meaningful causes, and make a positive impact—one meal at a time.
+                </p>
+
+                <p style="margin-top:30px; font-size:15px; color:#374151;">
+                  Warm regards,<br>
+                  <strong>Team AnyaDaan</strong><br>
+                  <span style="color:#22c55e;">Making kindness easier 🤍</span>
+                </p>
+              </td>
+            </tr>
+
+            <!-- Footer -->
+            <tr>
+              <td style="background-color:#f9fafb; padding:20px 40px; font-size:12px; color:#6b7280;">
+                <p style="margin:0; line-height:1.6;">
+                  You are receiving this email because you signed up on AnyaDaan.
+                </p>
+                <p style="margin:6px 0 0;">
+                  © 2026 AnyaDaan • All rights reserved
+                </p>
+              </td>
+            </tr>
+
+          </table>
+
+        </td>
+      </tr>
+    </table>
+
+  </body>
+</html>
+
 """
 
             print(f"📧 Sending OTP {otp} to {email}")
@@ -146,7 +212,7 @@ Making kindness easier 🤍
                     "subject": "Welcome to AnyaDaan – Thank You for Joining Us",
                     "content": [
                         {
-                            "type": "text/plain",
+                            "type": "text/html",
                             "value": message
                         }
                     ],
