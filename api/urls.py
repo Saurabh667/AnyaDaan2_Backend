@@ -4,6 +4,7 @@ from accounts import views
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 from donations import views as donationViews
 from payments import views as paymentsViews
+from .views import chat_view
 
 
 urlpatterns = [
@@ -17,5 +18,7 @@ urlpatterns = [
     path("contributions/board",donationViews.contribution_board),
     path("create-order/",paymentsViews.create_order),
     path("verify-payment/", paymentsViews.verify_payment),
+    path("api/chat/", chat_view),
+
 
 ]
