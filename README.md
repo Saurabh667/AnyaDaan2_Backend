@@ -96,9 +96,8 @@ Each role has clearly defined permissions enforced at API level.
 
 ### Backend
 - **Python**
-- **Flask**
-- Flask-RESTful
-- Flask-JWT / Token-based auth
+Django
+Django Rest Framework
 
 ### Database
 - PostgreSQL / MongoDB
@@ -106,13 +105,8 @@ Each role has clearly defined permissions enforced at API level.
 
 ### Communication
 - SMTP / EmailJS
-- REST APIs (JSON)
+- REST APIs
 
-### Infrastructure *(Planned)*
-- Docker
-- Nginx
-- CI/CD Pipelines
-- Rate limiting & API security
 
 ---
 
