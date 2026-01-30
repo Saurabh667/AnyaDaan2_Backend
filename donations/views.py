@@ -15,9 +15,12 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 import os
 import requests
+from rest_framework.parsers import MultiPartParser, FormParser
 
 
 class DonationCreateView(APIView):
+    parser_classes = (MultiPartParser, FormParser)
+
     def post(self, request):
 
         serializer = DonationDataSerializer(data=request.data)
