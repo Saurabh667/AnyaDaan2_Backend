@@ -19,6 +19,7 @@ urlpatterns = [
     path("create-order/",paymentsViews.create_order),
     path("verify-payment/", paymentsViews.verify_payment),
     path("api/chat/", chat_view),
+    path("payments/leaderboard/", paymentsViews.payments_leaderboard),
 
 
 ]

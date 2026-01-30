@@ -197,24 +197,6 @@ You’re receiving this email because you made a contribution on AnyaDaan.<br>
 
         if response.status_code not in (200, 202):
             raise Exception(response.text)
-#         send_mail(
-#             subject="Thank you for your contribution 🤍",
-#             message=f"""
-# Hello {payment.name},
-
-# Thank you for your kind contribution on AnyaDaan.
-# Your generosity can make a real difference in someone’s life.
-
-# Warm regards,
-# Team AnyaDaan
-# Making kindness easier 🤍
-#             """,
-#             from_email=from_email,
-#             recipient_list=[payment.email],  # ✅ FIXED
-#             fail_silently=False,
-#         )
-
-#         print("Thank you email sent to:", payment.email)
 
         return Response({"status": "Payment verified successfully"})
 
@@ -240,3 +222,24 @@ You’re receiving this email because you made a contribution on AnyaDaan.<br>
             {"error": str(e)},
             status=500
         )
+
+
+from django.db.models import Sum
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+from .models import Payment
+
+
+@api_view(["GET"])
+def payments_leaderboard(request):
+    leaderboard = (
+        Payment.objects
+        .filter(status="success")
+        .values("name")
+        .annotate(total_amount=Sum("amount"))
+        .order_by("-total_amount")[:10]
+    )
+
+    return Response({
+        "leaderboard": list(leaderboard)
+    })
