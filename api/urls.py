@@ -5,6 +5,9 @@ from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 from donations import views as donationViews
 from payments import views as paymentsViews
 from .views import chat_view
+from django.conf import settings
+from django.conf.urls.static import static
+
 
 
 urlpatterns = [
@@ -21,5 +24,5 @@ urlpatterns = [
     path("api/chat/", chat_view),
     path("payments/leaderboard/", paymentsViews.payments_leaderboard),
 
-
 ]
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
