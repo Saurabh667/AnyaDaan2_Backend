@@ -24,16 +24,6 @@ class DonationCreateView(APIView):
         if serializer.is_valid():
             # serializer.save()
             donation=serializer.save()
-            image_html = ""
-            if donation.image and hasattr(donation.image, "url"):
-                image_html = f"""
-                  <img
-                    src="{donation.image.url}"
-                    alt="Donation Image"
-                    width="400"
-                    style="margin-top:12px;border-radius:8px;"
-                  />
-                """
             receiversEmails=list(
             CustomUser.objects
             .filter(role='receiver')
@@ -102,7 +92,7 @@ class DonationCreateView(APIView):
 
               <!-- Description -->
               <p style="margin-top:18px;font-size:15px;">
-                  {image_html}
+                  
                 <strong>📝 Description:</strong><br>
                 {donation.description}
               </p>
