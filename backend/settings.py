@@ -260,6 +260,8 @@ CORS_ALLOW_CREDENTIALS = True
 CSRF_TRUSTED_ORIGINS = [
     "http://localhost:5173",
     "https://anyadaan2-backend-1.onrender.com",
+    "https://anyadaan.devxhub.in"
+
 ]
 
 # FRONTEND_URL = os.getenv("FRONTEND_URL")
